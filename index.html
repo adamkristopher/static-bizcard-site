@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="John Doe - Full Stack Developer | Digital Business Card"
+    />
+    <title>John Doe - Digital Business Card</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="favicon.png" />
+  </head>
+  <body>
+    <div class="theme-switch">
+      <input type="checkbox" id="dark-mode-toggle" />
+      <label for="dark-mode-toggle">
+        <span class="toggle-icon">🌙</span>
+        <span class="toggle-icon light">☀️</span>
+      </label>
+    </div>
+
+    <div class="card-container">
+      <div class="card">
+        <!-- Profile Section -->
+        <div class="profile">
+          <div class="profile-image">
+            <!-- Replace with your image or add a placeholder -->
+            <img src="https://via.placeholder.com/300" alt="John Doe" />
+          </div>
+          <h1>John Doe</h1>
+          <h2>Full Stack Developer</h2>
+          <p class="tagline">Building elegant solutions to complex problems</p>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="contact-info">
+          <div class="contact-item">
+            <span class="icon">📧</span>
+            <a href="mailto:john.doe@example.com">john.doe@example.com</a>
+          </div>
+          <div class="contact-item">
+            <span class="icon">📱</span>
+            <a href="tel:+1234567890">+1 (234) 567-890</a>
+          </div>
+          <div class="contact-item">
+            <span class="icon">🌐</span>
+            <a href="https://johndoe.com" target="_blank">johndoe.com</a>
+          </div>
+        </div>
+
+        <!-- Social Media Links -->
+        <div class="social-links">
+          <a
+            href="https://linkedin.com/in/johndoe"
+            target="_blank"
+            class="social-icon"
+          >
+            <span class="icon">LinkedIn</span>
+          </a>
+          <a
+            href="https://github.com/johndoe"
+            target="_blank"
+            class="social-icon"
+          >
+            <span class="icon">GitHub</span>
+          </a>
+          <a
+            href="https://twitter.com/johndoe"
+            target="_blank"
+            class="social-icon"
+          >
+            <span class="icon">Twitter</span>
+          </a>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="skills-section">
+          <h3>Skills</h3>
+          <div class="skills-grid">
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">UI/UX</span>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+          <button id="download-contact" class="action-button primary">
+            <span class="button-icon">📥</span> Save Contact
+          </button>
+          <a href="qr-code.html" class="action-button secondary">
+            <span class="button-icon">🔄</span> Generate QR Code
+          </a>
+        </div>
+      </div>
+
+      <footer class="card-footer">
+        <p>Made with <span class="heart">❤️</span> using Vercel and Claude</p>
+        <p class="copyright">© 2025 John Doe</p>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
