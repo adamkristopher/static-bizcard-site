@@ -14,6 +14,7 @@
       rel="stylesheet"
     />
     <link rel="icon" type="image/png" href="favicon.png" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   </head>
   <body>
     <div class="theme-switch">
@@ -30,7 +31,7 @@
         <div class="profile">
           <div class="profile-image">
             <!-- Replace with your image or add a placeholder -->
-            <img src="https://via.placeholder.com/300" alt="John Doe" />
+            <img src="my-pic.jpg" alt="John Doe" />
           </div>
           <h1>John Doe</h1>
           <h2>Full Stack Developer</h2>
@@ -96,14 +97,41 @@
           <button id="download-contact" class="action-button primary">
             <span class="button-icon">📥</span> Save Contact
           </button>
-          <a href="qr-code.html" class="action-button secondary">
-            <span class="button-icon">🔄</span> Generate QR Code
-          </a>
+          <button id="show-qr" class="action-button secondary">
+            <span class="button-icon">🔄</span> Show QR Code
+          </button>
         </div>
       </div>
 
+      <!-- QR Code Section (Initially Hidden) -->
+      <div id="qr-code-section" class="qr-code-section">
+        <h3>Scan this QR code to save my contact information</h3>
+        <div id="qrcode" class="qrcode-display"></div>
+        <div class="qr-options">
+          <div class="qr-option">
+            <label for="qr-size">Size:</label>
+            <select id="qr-size">
+              <option value="150">Small</option>
+              <option value="200" selected>Medium</option>
+              <option value="300">Large</option>
+            </select>
+          </div>
+          <div class="qr-option">
+            <label for="qr-color">Color:</label>
+            <input type="color" id="qr-color" value="#000000" />
+          </div>
+          <button id="update-qr" class="qr-button">Update QR Code</button>
+        </div>
+        <a
+          id="download-qr"
+          class="qr-download-button"
+          download="john-doe-contact.png"
+        >
+          <span class="button-icon">💾</span> Download QR Code
+        </a>
+      </div>
+
       <footer class="card-footer">
-        <p>Made with <span class="heart">❤️</span> using Vercel and Claude</p>
         <p class="copyright">© 2025 John Doe</p>
       </footer>
     </div>

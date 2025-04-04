@@ -4,21 +4,12 @@
  */
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Check which page we're on
-  const isMainPage = document.querySelector(".card");
-  const isQrPage = document.querySelector("#qrcode");
-
-  if (isMainPage) {
-    setupContactDownload();
-    setupCardAnimations();
-    setupDarkModeToggle();
-    trackCardViews();
-  }
-
-  if (isQrPage) {
-    setupQrCodeGenerator();
-    setupBackButton();
-  }
+  // Main page functionality
+  setupContactDownload();
+  setupCardAnimations();
+  setupDarkModeToggle();
+  setupQRCodeSection();
+  trackCardViews();
 });
 
 // Function to handle contact saving
@@ -117,33 +108,77 @@ const setupDarkModeToggle = () => {
   }
 };
 
-// Setup QR code generator if on QR page
-const setupQrCodeGenerator = () => {
-  const generateButton = document.getElementById("generate");
-  if (generateButton) {
-    const contentTypeSelect = document.getElementById("content-type");
-    const urlInput = document.getElementById("url-input");
-    const vcardInputs = document.getElementById("vcard-inputs");
-    const textInput = document.getElementById("text-input");
+// Setup QR code generation functionality
+const setupQRCodeSection = () => {
+  const showQRButton = document.getElementById("show-qr");
+  const qrSection = document.getElementById("qr-code-section");
+  const updateQRButton = document.getElementById("update-qr");
+  const qrSizeSelect = document.getElementById("qr-size");
+  const qrColorInput = document.getElementById("qr-color");
+  const qrCodeDiv = document.getElementById("qrcode");
+  const downloadQRLink = document.getElementById("download-qr");
 
-    contentTypeSelect.addEventListener("change", () => {
-      const selectedValue = contentTypeSelect.value;
-      urlInput.style.display = selectedValue === "url" ? "block" : "none";
-      vcardInputs.style.display = selectedValue === "vcard" ? "block" : "none";
-      textInput.style.display = selectedValue === "text" ? "block" : "none";
+  if (showQRButton && qrSection) {
+    // Toggle QR code section visibility
+    showQRButton.addEventListener("click", () => {
+      if (qrSection.classList.contains("active")) {
+        qrSection.classList.remove("active");
+        showQRButton.innerHTML =
+          '<span class="button-icon">🔄</span> Show QR Code';
+      } else {
+        qrSection.classList.add("active");
+        showQRButton.innerHTML =
+          '<span class="button-icon">🔄</span> Hide QR Code';
+
+        // Generate QR code if it doesn't exist yet
+        if (!qrCodeDiv.hasChildNodes()) {
+          generateQRCode();
+        }
+      }
     });
 
-    // Handle QR code generation logic
+    // Update QR code when button is clicked
+    if (updateQRButton) {
+      updateQRButton.addEventListener("click", generateQRCode);
+    }
   }
-};
 
-// Setup back button for QR page
-const setupBackButton = () => {
-  const backButton = document.querySelector(".back-button");
-  if (backButton) {
-    backButton.addEventListener("click", () => {
-      window.location.href = "index.html";
+  function generateQRCode() {
+    // Clear previous QR code
+    qrCodeDiv.innerHTML = "";
+
+    // Get size and color
+    const size = parseInt(qrSizeSelect.value);
+    const color = qrColorInput.value;
+
+    // Create vCard content
+    const vCardContent = `BEGIN:VCARD
+VERSION:3.0
+FN:John Doe
+TITLE:Full Stack Developer
+TEL;TYPE=CELL:+1234567890
+EMAIL:john.doe@example.com
+URL:${window.location.href}
+END:VCARD`;
+
+    // Generate QR code
+    const qrcode = new QRCode(qrCodeDiv, {
+      text: vCardContent,
+      width: size,
+      height: size,
+      colorDark: color,
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.H,
     });
+
+    // Update download link
+    setTimeout(() => {
+      const qrImage = qrCodeDiv.querySelector("img");
+      if (qrImage) {
+        downloadQRLink.href = qrImage.src;
+        downloadQRLink.style.display = "inline-block";
+      }
+    }, 300);
   }
 };
 

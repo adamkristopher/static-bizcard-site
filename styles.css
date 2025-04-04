@@ -1,7 +1,91 @@
-/* 
- * Digital Business Card Stylesheet
- * Modern, responsive design for a professional presence
- */
+/* QR Code Section */
+.qr-code-section {
+  background-color: var(--card-background);
+  border-radius: 15px;
+  box-shadow: var(--card-shadow);
+  padding: 25px;
+  margin-top: 20px;
+  text-align: center;
+  display: none; /* Hidden by default */
+}
+
+.qr-code-section.active {
+  display: block;
+}
+
+.qr-code-section h3 {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: var(--text-color);
+}
+
+.qrcode-display {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.qr-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.qr-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.qr-option label {
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+.qr-option select,
+.qr-option input {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  background-color: var(--card-background);
+  color: var(--text-color);
+}
+
+.qr-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color var(--transition-speed);
+}
+
+.qr-button:hover {
+  background-color: var(--secondary-color);
+}
+
+.qr-download-button {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-top: 15px;
+  font-size: 14px;
+  transition: background-color var(--transition-speed);
+}
+
+.qr-download-button:hover {
+  background-color: var(--secondary-color);
+} /* 
+* Digital Business Card Stylesheet
+* Modern, responsive design for a professional presence
+*/
 
 :root {
   --primary-color: #0077cc;
